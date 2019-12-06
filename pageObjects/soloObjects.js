@@ -66,24 +66,29 @@ var customs = {
     },
     offSites: function (site) {
         this
+            .click('@home')
+            .waitForElementPresent('@page')
             .click(`${site}`);
     },
     teachers: function (teacher) {
         this
+            .clearValue('@teachSearch')
             .setValue('@teachSearch', `${teacher}`)
             .click('@teachSubmit')
             .waitForElementPresent(`a[title='${teacher}']`)
             .verify.containsText(`a[title='${teacher}']`, teacher)
             .click(`a[title='${teacher}']`)
-            .verify.containsText(`a[title='${teacher}']`, teacher);
+            .verify.containsText(`a[title='${teacher}']`, teacher)
+            .api.back();
         return this;
     },
-
-    subjects: function (subject) {
-        this
-            .click(`img[title='${subject}']`);
-        return this;
-    },
+    // subjects: function (subject) {
+    //     this
+    //         .moveToElement(`img[title='${subject}']`, 0, 0)
+    //         .pause(5000)
+    //         .click(`img[title='${subject}']`);
+    //     return this;
+    // },
 }
 module.exports = {
     url: 'https://rivertoncte.org/',

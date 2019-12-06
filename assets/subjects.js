@@ -1,5 +1,5 @@
 module.exports = [
-    "Agriculture Education",
+    //"Agriculture Education",
     "Business Education",
     "FACS",
     "Health Science",
