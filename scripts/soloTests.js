@@ -12,33 +12,33 @@ module.exports = {
         browser
             .end();
     },
-    // 'Navigation': browser => {
-    // cte
-    //     .naviIsAnnoying();
-    //     office.forEach(site => {
-    //         cte
-    //             .offSites(site);
-    //         browser
-    //             .windowHandles(res => {
-    //                 browser
-    //                     .switchWindow(res.value[1])
-    //                     .pause(30000)
-    //                     .closeWindow()
-    //                     .switchWindow(res.value[0]);
-    //             });
-    //     });
-    // },
-    // 'Search Teachers': browser => {
-    //     cte
-    //         .moveToElement('@staff', 0, 0)
-    //         .waitForElementPresent('@teachers')
-    //         .click('@teachers')
-    //         .waitForElementPresent('@page')
-    //     teachUS.forEach(teacher => {
-    //         cte
-    //             .teachers(teacher);
-    //     });
-    // },
+    'Navigation': browser => {
+    cte
+        .naviIsAnnoying();
+        office.forEach(site => {
+            cte
+                .offSites(site);
+            browser
+                .windowHandles(res => {
+                    browser
+                        .switchWindow(res.value[1])
+                        .pause(30000)
+                        .closeWindow()
+                        .switchWindow(res.value[0]);
+                });
+        });
+    },
+    'Search Teachers': browser => {
+        cte
+            .moveToElement('@staff', 0, 0)
+            .waitForElementPresent('@teachers')
+            .click('@teachers')
+            .waitForElementPresent('@page')
+        teachUS.forEach(teacher => {
+            cte
+                .teachers(teacher);
+        });
+    },
     'Search Subjects': browser => {
         cte
             .click('@study')
