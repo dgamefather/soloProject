@@ -82,13 +82,14 @@ var customs = {
             .api.back();
         return this;
     },
-    // subjects: function (subject) {
-    //     this
-    //         .moveToElement(`img[title='${subject}']`, 0, 0)
-    //         .pause(5000)
-    //         .click(`img[title='${subject}']`);
-    //     return this;
-    // },
+    subjects: function (subject) {
+        this
+            .verify.visible(`img[title="${subject}"][src^="http"]`)
+            .moveToElement(`img[title="${subject}"][src^="http"]`, 0, 0)
+            .pause(5000)
+            .click(`img[title="${subject}"][src^="http"]`);
+        return this;
+    },
 }
 module.exports = {
     url: 'https://rivertoncte.org/',

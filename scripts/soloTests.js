@@ -12,12 +12,40 @@ module.exports = {
         browser
             .end();
     },
-    'Navigation': browser => {
-    cte
-        .naviIsAnnoying();
-        office.forEach(site => {
+    // 'Navigation': browser => {
+    // cte
+    //     .naviIsAnnoying();
+    //     office.forEach(site => {
+    //         cte
+    //             .offSites(site);
+    //         browser
+    //             .windowHandles(res => {
+    //                 browser
+    //                     .switchWindow(res.value[1])
+    //                     .pause(30000)
+    //                     .closeWindow()
+    //                     .switchWindow(res.value[0]);
+    //             });
+    //     });
+    // },
+    // 'Search Teachers': browser => {
+    //     cte
+    //         .moveToElement('@staff', 0, 0)
+    //         .waitForElementPresent('@teachers')
+    //         .click('@teachers')
+    //         .waitForElementPresent('@page')
+    //     teachUS.forEach(teacher => {
+    //         cte
+    //             .teachers(teacher);
+    //     });
+    // },
+    'Search Subjects': browser => {
+        cte
+            .click('@study')
+            .waitForElementPresent('@page');
+        subjectUS.forEach(sub => {
             cte
-                .offSites(site);
+                .subjects(sub);
             browser
                 .windowHandles(res => {
                     browser
@@ -28,40 +56,5 @@ module.exports = {
                 });
         });
     },
-    'Search Teachers': browser => {
-        cte
-            .moveToElement('@staff', 0, 0)
-            .waitForElementPresent('@teachers')
-            .click('@teachers')
-            .waitForElementPresent('@page')
-        teachUS.forEach(teacher => {
-            cte
-                .teachers(teacher);
-        });
-    },
-    // 'Search Subjects': browser => {
-    //     cte
-    //         .click('@study')
-    //         .waitForElementPresent('@page');
-    //     subjectUS.forEach(sub => {
-    //         cte
-    //             .subjects(sub);
-    //         browser
-    //             .windowHandles(res => {
-    //                 browser
-    //                     .pause(30000)
-    //                     .switchWindow(res.value[0]);
-    //             });
-    //     });
-    //     for (x = 7; x > 0; x--) {
-    //         browser
-    //             .windowHandles(res => {
-    //                 browser
-    //                     .switchWindow(res.value[x])
-    //                     .pause(5000)
-    //                     .closeWindow()
-    //             });
-    //     };
-    // },
 }
 
