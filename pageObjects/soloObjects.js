@@ -66,12 +66,14 @@ var customs = {
     },
     offSites: function (site) {
         this
+            // Click the _blank tabs on the Navigation Bar
             .click('@home')
             .waitForElementPresent('@page')
             .click(`${site}`);
     },
     teachers: function (teacher) {
         this
+            // Search for a Specific Teacher
             .clearValue('@teachSearch')
             .setValue('@teachSearch', `${teacher}`)
             .click('@teachSubmit')
@@ -84,10 +86,86 @@ var customs = {
     },
     subjects: function (subject) {
         this
+            // Click a specific subject image
             .verify.visible(`img[title="${subject}"][src^="http"]`)
             .moveToElement(`img[title="${subject}"][src^="http"]`, 0, 0)
             .pause(5000)
             .click(`img[title="${subject}"][src^="http"]`);
+        return this;
+    },
+    contact: function (data) {
+        this
+            // Load Page
+            .waitForElementPresent('@page')
+            .moveToElement('@staff', 0, 0)
+            .waitForElementPresent('@contact')
+            .click('@contact')
+            .waitForElementPresent('@page')
+
+            // Clear Form Fields
+            .clearValue('@name')
+            .clearValue('@email')
+            .clearValue('@sub')
+            .clearValue('@msg')
+
+            // Fill Form
+            .setValue('@name', data.name)
+            .setValue('@email', data.email)
+            .setValue('@sub', data.subject)
+            .setValue('@msg', data.msg)
+
+            //Verify Form
+            .verify.value('@name', data.name)
+            .verify.value('@email', data.email)
+            .verify.value('@sub', data.subject)
+            .verify.value('@msg', data.msg)
+
+        // Send Button
+        // .click('@send');
+
+        return this;
+    },
+    clubs: function () {
+        this
+            // Load Page
+            .waitForElementPresent('@page')
+            .click('@club')
+            .waitForElementPresent('@page')
+
+            // Select Clubs
+            // DECA
+            .verify.elementPresent('@deca')
+            .click('@deca')
+            .waitForElementPresent('@decaFblaPage')
+            .api.back();
+
+        // FBLA
+        this
+            .waitForElementPresent('@page')
+            .verify.elementPresent('@fbla')
+            .click('@fbla')
+            .waitForElementPresent('@decaFblaPage')
+            .api.back();
+
+        // FCCLA
+        this
+            .waitForElementPresent('@page')
+            .verify.elementPresent('@fccla')
+            .click('@fccla')
+            .waitForElementPresent('@fcclaPage')
+            .api.back();
+
+        // HOSA
+        this
+            .waitForElementPresent('@page')
+            .verify.elementPresent('@hosa')
+            .click('@hosa')
+            .waitForElementPresent('@hosaPage')
+            .api.back();
+        
+        this
+            .waitForElementPresent('@page');
+
         return this;
     },
 }
@@ -121,5 +199,33 @@ module.exports = {
         // Teachers Page
         teachSearch: '#cn-search-input',
         teachSubmit: '#cn-search-submit',
+
+        // Contact Page
+        name: '[name="contact-name"]',
+        email: '[name="contact-email"]',
+        sub: '[name="contact-subject"]',
+        msg: '[name="contact-content"]',
+        send: '[name="contact-submit"]',
+
+        // Club Links
+        deca: {
+            selector: '//*[contains(text(), "Riverton DECA Website")]',
+            locateStrategy: 'xpath'
+        },
+        fbla: {
+            selector: '//*[contains(text(), "Riverton FBLA Wesite")]',
+            locateStrategy: 'xpath'
+        },
+        decaFblaPage: '#footer-wrap',
+        fccla: {
+            selector: '//*[contains(text(), "Riverton FCCLA Website")]',
+            locateStrategy: 'xpath'
+        },
+        fcclaPage: '#SITE_CONTAINER',
+        hosa: {
+            selector: '//*[contains(text(), "Riverton HOSA Website")]',
+            locateStrategy: 'xpath'
+        },
+        hosaPage: '#page-wrap',
     }
 }

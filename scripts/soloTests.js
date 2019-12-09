@@ -2,6 +2,7 @@ var cte = {};
 var office = require('../assets/navBar');
 var teachUS = require('../assets/teachers');
 var subjectUS = require('../assets/subjects');
+var meep = require('../assets/contact');
 module.exports = {
     before: browser => {
         cte = browser.page.soloObjects();
@@ -55,5 +56,13 @@ module.exports = {
                         .switchWindow(res.value[0]);
                 });
         });
+    },
+    'Contact Me': browser => {
+        cte
+            .contact(meep);
+    },
+    'Club Organization Pages': browser => {
+        cte
+            .clubs();
     },
 }
