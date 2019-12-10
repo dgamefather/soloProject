@@ -70,6 +70,8 @@ var customs = {
             .click('@home')
             .waitForElementPresent('@page')
             .click(`${site}`);
+
+        return this;
     },
     teachers: function (teacher) {
         this
@@ -127,16 +129,11 @@ var customs = {
     },
     clubs: function () {
         this
-            // Load Page
-            .waitForElementPresent('@page')
-            .click('@club')
-            .waitForElementPresent('@page')
-
             // Select Clubs
             // DECA
             .verify.elementPresent('@deca')
             .click('@deca')
-            .waitForElementPresent('@decaFblaPage')
+            .waitForElementPresent('@decaFblaHosaPage')
             .api.back();
 
         // FBLA
@@ -144,7 +141,7 @@ var customs = {
             .waitForElementPresent('@page')
             .verify.elementPresent('@fbla')
             .click('@fbla')
-            .waitForElementPresent('@decaFblaPage')
+            .waitForElementPresent('@decaFblaHosaPage')
             .api.back();
 
         // FCCLA
@@ -160,9 +157,9 @@ var customs = {
             .waitForElementPresent('@page')
             .verify.elementPresent('@hosa')
             .click('@hosa')
-            .waitForElementPresent('@hosaPage')
+            .waitForElementPresent('@decaFblaHosaPage')
             .api.back();
-        
+
         this
             .waitForElementPresent('@page');
 
@@ -216,7 +213,6 @@ module.exports = {
             selector: '//*[contains(text(), "Riverton FBLA Wesite")]',
             locateStrategy: 'xpath'
         },
-        decaFblaPage: '#footer-wrap',
         fccla: {
             selector: '//*[contains(text(), "Riverton FCCLA Website")]',
             locateStrategy: 'xpath'
@@ -226,6 +222,6 @@ module.exports = {
             selector: '//*[contains(text(), "Riverton HOSA Website")]',
             locateStrategy: 'xpath'
         },
-        hosaPage: '#page-wrap',
+        decaFblaHosaPage: '#footer-wrap',
     }
 }

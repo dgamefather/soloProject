@@ -14,8 +14,8 @@ module.exports = {
             .end();
     },
     'Navigation': browser => {
-    cte
-        .naviIsAnnoying();
+        cte
+            .naviIsAnnoying();
         office.forEach(site => {
             cte
                 .offSites(site);
@@ -63,6 +63,9 @@ module.exports = {
     },
     'Club Organization Pages': browser => {
         cte
+            .waitForElementPresent('@page')
+            .click('@club')
+            .waitForElementPresent('@page')
             .clubs();
     },
 }
