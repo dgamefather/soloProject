@@ -19,12 +19,13 @@ module.exports = {
             .naviIsAnnoying();
         office.forEach(site => {
             cte
+                .click('@home')
                 .offSites(site);
             browser
                 .windowHandles(res => {
                     browser
                         .switchWindow(res.value[1])
-                        .pause(30000)
+                        .pause(2000)
                         .closeWindow()
                         .switchWindow(res.value[0]);
                 });
@@ -55,7 +56,7 @@ module.exports = {
                 .windowHandles(res => {
                     browser
                         .switchWindow(res.value[1])
-                        .pause(30000)
+                        .pause(2000)
                         .closeWindow()
                         .switchWindow(res.value[0]);
                 });

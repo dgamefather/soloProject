@@ -67,7 +67,6 @@ var customs = {
     offSites: function (site) {
         this
             // Click the _blank tabs on the Navigation Bar
-            .click('@home')
             .waitForElementPresent('@page')
             .click(`${site}`);
 
