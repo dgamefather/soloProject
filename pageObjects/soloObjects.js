@@ -88,7 +88,7 @@ var customs = {
             .verify.elementPresent('@jatcHome')
             .click('@jatcHome');
 
-        return this
+        return this;
     },
     teachers: function (teacher) {
         this
@@ -182,6 +182,16 @@ var customs = {
 
         return this;
     },
+    search: function (search) {
+        this
+            .clearValue('@searchBar')
+            .setValue('@searchBar', search)
+            .click('@searchBtn')
+            .waitForElementPresent('@page')
+            .verify.containsText('@searchTitle', `SEARCH RESULTS FOR: ${search}`)
+
+        return this;
+    },
 }
 module.exports = {
     url: 'https://rivertoncte.org/',
@@ -189,6 +199,11 @@ module.exports = {
     elements: {
         // All
         page: 'iframe[title*="Twitter"]',
+
+        // Search Bar
+        searchBar: '.search-input',
+        searchBtn: '.search-button',
+        searchTitle: '#page-title',
 
         //Navigation Bar
         home: '#menu-item-727',

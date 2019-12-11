@@ -3,6 +3,7 @@ var office = require('../assets/navBar');
 var teachUS = require('../assets/teachers');
 var subjectUS = require('../assets/subjects');
 var meep = require('../assets/contact');
+var searchUS = require('../assets/search');
 module.exports = {
     before: browser => {
         cte = browser.page.soloObjects();
@@ -70,5 +71,14 @@ module.exports = {
             .click('@club')
             .waitForElementPresent('@page')
             .clubs();
+    },
+    'Search Bar': browser => {
+        cte
+            .click('@home')
+            .waitForElementPresent('@page')
+        searchUS.forEach(results => {
+            cte
+                .search(results);
+        })
     },
 }
