@@ -73,6 +73,23 @@ var customs = {
 
         return this;
     },
+    home: function () {
+        this
+            .verify.elementPresent('@classHome')
+            .click('@classHome')
+            .waitForElementPresent('@page')
+            .click('@home')
+            .waitForElementPresent('@page')
+            .verify.elementPresent('@clubsHome')
+            .click('@clubsHome')
+            .waitForElementPresent('@page')
+            .click('@home')
+            .waitForElementPresent('@page')
+            .verify.elementPresent('@jatcHome')
+            .click('@jatcHome');
+
+        return this
+    },
     teachers: function (teacher) {
         this
             // Search for a Specific Teacher
@@ -223,5 +240,10 @@ module.exports = {
             locateStrategy: 'xpath'
         },
         decaFblaHosaPage: '#footer-wrap',
+
+        // Home Page
+        classHome: '.icon-box-link a[href*="rivertoncte.org/?page_id=1305"]',
+        clubsHome: '.icon-box-link a[href*="rivertoncte.org/?page_id=989"]',
+        jatcHome: '.icon-box-link a[href*="http://www.jatc-wj.org/"]',
     }
 }

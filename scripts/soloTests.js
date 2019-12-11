@@ -28,6 +28,9 @@ module.exports = {
                         .switchWindow(res.value[0]);
                 });
         });
+        cte
+            .home()
+            .navigate();
     },
     'Search Teachers': browser => {
         cte
