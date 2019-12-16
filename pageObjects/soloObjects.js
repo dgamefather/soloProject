@@ -258,6 +258,6 @@ module.exports = {
         // Home Page
         classHome: '.icon-box-link a[href*="rivertoncte.org/?page_id=1305"]',
         clubsHome: '.icon-box-link a[href*="rivertoncte.org/?page_id=989"]',
-        jatcHome: '.icon-box-link a[href*="http://www.jatc-wj.org/"]',
+        jatcHome: '.icon-box-link a[href*="jatc-wj.org"]',
     }
 }
